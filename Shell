@@ -1,0 +1,78 @@
+5A
+*********************************************
+echo "Enter file:"
+read str
+
+if [ -f "$str" ]; then
+    echo "File exists and it is an ordinary file"
+
+elif [ -d "$str" ]; then
+    echo "It is a directory"
+
+else
+    echo "File or directory does not exist"
+fi
+
+***********************************************
+5B
+***********************************************
+#!/bin/bash
+
+# This script takes one or more filenames as command line arguments
+# and converts the contents of each existing file to uppercase.
+
+for filename in "$@"
+do
+    if [ ! -f "$filename" ]; then
+        echo "File '$filename' does not exist"
+        continue
+    fi
+
+    echo "Uppercase content of $filename:"
+    tr '[:lower:]' '[:upper:]' < "$filename"
+    echo # Add newline
+done
+
+**********************************************
+5C
+**********************************************
+[30-05-2025 21:37] Justin S: echo "Enter the USER NAME: "
+read user
+last "$user"
+*******************************************
+7a
+********************************************
+#!/bin/bash
+
+echo "Enter basic salary:"
+read bsal
+
+if [ "$bsal" -lt 1500 ]; then
+    gsal=$((bsal + (bsal * 10 / 100) + (bsal * 90 / 100)))
+    echo "The gross salary is $gsal"
+
+elif [ "$bsal" -ge 1500 ]; then
+    gsal=$((bsal + 500 + (bsal * 98 / 100)))
+    echo "The gross salary is $gsal"
+fi
+*****************************************
+7b
+*******************************************
+ #!/bin/bash
+
+echo "Enter the integer value:"
+read int1
+
+echo "Enter the power of that integer:"
+read int2
+
+pv=1
+i=0
+
+while [ "$i" -lt "$int2" ]
+do
+    pv=$((pv * int1))
+    i=$((i + 1))
+done
+
+echo "The value of $int1 raised to the power of $int2 is: $pv"
